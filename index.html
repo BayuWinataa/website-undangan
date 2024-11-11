@@ -30,13 +30,14 @@
   <section id="hero"
     class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
     <main>
-      <h4>Kepada <span>Bapak/Ibu/Saudara/i, </span></h4>
-      <h1>Bayu & Winata </h1>
-      <p>Akan melangsungkan resepsi pernikahan dalam:</p>
+      <h4 id="animated-heading">Kepada <span>Bapak/Ibu/Saudara/i, </span></h4>
+      <h1 id="animated-text">
+        Bayu & Winata
+      </h1>
+      <p id="animated-paragraph">Akan melangsungkan resepsi pernikahan dalam:</p>
       <div class="simply-countdown"></div>
-      <a href="#home" class="btn btn-lg mt-4" onClick="enableScroll()">Lihat Undangan</a>
+      <a href="#home" class="btn btn-lg mt-4" id="animated-button" onClick="enableScroll()">Lihat Undangan</a>
     </main>
-
   </section>
 
   <nav class="navbar navbar-expand-md bg-transparent sticky-top mynavbar">
@@ -311,36 +312,36 @@
       </div>
 
       <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 justify-content-center">
-        <div class="col mt-3"  data-aos="zoom-in" data-aos-duration="800">
+        <div class="col mt-3" data-aos="zoom-in" data-aos-duration="800">
           <a href="img/default.jpg" data-toggle="lightbox" data-caption="Bayu 1" data-gallery="mygallery">
             <img src="img/default.jpg" alt="Sandhika & Nofa 1" class="img-fluid w-100 rounded">
           </a>
         </div>
-        <div class="col mt-3"  data-aos="zoom-in" data-aos-duration="800">
+        <div class="col mt-3" data-aos="zoom-in" data-aos-duration="800">
           <a href="https://picsum.photos/id/300/1200/768" data-toggle="lightbox" data-caption="Bayu"
             data-gallery="mygallery">
             <img src="https://picsum.photos/id/300/300/400" alt="Bayu" class="img-fluid w-100 rounded">
           </a>
         </div>
-        <div class="col mt-3"  data-aos="zoom-in" data-aos-duration="800">
+        <div class="col mt-3" data-aos="zoom-in" data-aos-duration="800">
           <a href="https://picsum.photos/id/301/1200/768" data-toggle="lightbox" data-caption="Bayu"
             data-gallery="mygallery">
             <img src="https://picsum.photos/id/301/300/400" alt="Bayu" class="img-fluid w-100 rounded">
           </a>
         </div>
-        <div class="col mt-3"  data-aos="zoom-in" data-aos-duration="800">
+        <div class="col mt-3" data-aos="zoom-in" data-aos-duration="800">
           <a href="https://picsum.photos/id/302/1200/768" data-toggle="lightbox" data-caption="Bayu"
             data-gallery="mygallery">
             <img src="https://picsum.photos/id/302/300/400" alt="Bayu" class="img-fluid w-100 rounded">
           </a>
         </div>
-        <div class="col mt-3"  data-aos="zoom-in" data-aos-duration="800">
+        <div class="col mt-3" data-aos="zoom-in" data-aos-duration="800">
           <a href="https://picsum.photos/id/304/1200/768" data-toggle="lightbox" data-caption="Bayu"
             data-gallery="mygallery">
             <img src="https://picsum.photos/id/304/300/400" alt="Bayu" class="img-fluid w-100 rounded">
           </a>
         </div>
-        <div class="col mt-3"  data-aos="zoom-in" data-aos-duration="800">
+        <div class="col mt-3" data-aos="zoom-in" data-aos-duration="800">
           <a href="https://picsum.photos/id/305/1200/768" data-toggle="lightbox" data-caption="Bayu"
             data-gallery="mygallery">
             <img src="https://picsum.photos/id/305/300/400" alt="Bayu" class="img-fluid w-100 rounded">
@@ -614,6 +615,44 @@
     namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
 
     document.querySelector('#nama').value = nama;
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script>
+    // Animasi untuk nama
+    const textWrapper = document.querySelector('#animated-text');
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+    gsap.from(".letter", {
+      duration: 0.5,
+      y: -50,
+      opacity: 0,
+      stagger: 0.1,
+      ease: "power2.out"
+    });
+
+    // Animasi untuk elemen lain
+    gsap.from("#animated-heading", {
+      duration: 1,
+      y: -30,
+      opacity: 0,
+      ease: "power2.out"
+    });
+
+    gsap.from("#animated-paragraph", {
+      duration: 1,
+      y: 30,
+      opacity: 0,
+      ease: "power2.out",
+      delay: 0.5 // Delay agar muncul setelah judul
+    });
+
+    gsap.from("#animated-button", {
+      duration: 1,
+      y: 30,
+      opacity: 0,
+      ease: "power2.out",
+      delay: 1 // Delay agar muncul setelah paragraf
+    });
   </script>
 </body>
 
